@@ -1,0 +1,17 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# PyInstaller
+# Usually these are not kept in source control
+build/
+dist/
+*.spec
+
+# Local config
+.batterysaver_config.json
