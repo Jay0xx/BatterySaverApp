@@ -14,28 +14,18 @@ A lightweight, cross-platform desktop application that monitors your laptop's ba
 
 ## ⚡ Quick Start
 
-### 🪟 Windows Users
-The easiest way is to use the pre-built executable.
-1.  **Download**: Get `BatterySaverApp.exe` from the [Releases](https://github.com/Jay0xx/BatterySaverApp/releases) page.
-2.  **Run**: Double-click the file to open settings.
-3.  **Protect**: Set your limits and click **Save & Minimize**. It will hide in your system tray.
+The app can be run by downloading the project directly from the GitHub repository.
 
-### 🍎 macOS Users
-To run the app on Mac:
-1.  **Install Python**: Ensure you have Python 3 installed.
-2.  **Install Dependencies**: Open Terminal and run:
+1.  **Download**: Click the green **"Code"** button at the top of this page and select **"Download ZIP"**.
+2.  **Extract**: Right-click the downloaded folder and "Extract All".
+3.  **Install dependencies**: Open your terminal and run:
     ```bash
-    pip3 install psutil plyer pystray pillow
+    pip install psutil plyer pystray pillow
     ```
-3.  **Launch**: Download `battery_monitor.py` and run:
-    ```bash
-    python3 battery_monitor.py
-    ```
-4.  **Package (Optional)**: If you want a `.app` file, run:
-    ```bash
-    pip3 install pyinstaller
-    pyinstaller --onefile --windowed --name BatterySaverApp battery_monitor.py
-    ```
+4.  **Run**: Double-click `battery_monitor.py` or run `python battery_monitor.py` in your terminal to open the settings.
+5.  **Protect**: Set your limits and click **Save & Minimize**. It will hide in your system tray.
+
+> **Note for Windows Users**: If you have built your own `.exe` using the developer instructions below, you can run that directly without needing to install Python libraries first.
 
 ---
 
