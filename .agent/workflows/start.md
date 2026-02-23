@@ -1,15 +1,16 @@
 ---
-description: Start the BatterySaverApp
+description: Start the BatterySaverApp (Cross-Platform)
 ---
 
-1. Ensure dependencies are installed:
-`pip install psutil plyer pystray pillow`
-*(Note: Use `pip3` on macOS)*
+1. Install dependencies:
+- **Windows**: `pip install psutil plyer pystray pillow`
+- **macOS**: `pip3 install psutil plyer pystray pillow`
 
 // turbo
 2. Start the monitor script:
-`python battery_monitor.py`
-*(Note: Use `python3` on macOS if necessary)*
+- **Windows**: `python battery_monitor.py`
+- **macOS**: `python3 battery_monitor.py`
 
-3. To start directly in the background (tray only):
-`python battery_monitor.py --background`
+3. Start directly in the background (tray/menu bar):
+- **Windows**: `python battery_monitor.py --background`
+- **macOS**: `python3 battery_monitor.py --background`
