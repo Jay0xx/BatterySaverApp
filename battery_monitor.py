@@ -86,8 +86,55 @@ def set_autostart(enabled):
             winreg.CloseKey(key)
         except Exception as e:
             print(f"Windows Registry Error: {e}")
-    # Other OS implemetations omitted for brevity in this single file, 
-    # but same logic as previous version applies.
+
+    elif system == "Darwin":  # macOS
+        plist_path = os.path.expanduser(f"~/Library/LaunchAgents/com.{APP_NAME.lower()}.plist")
+        if enabled:
+            content = f"""<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.{APP_NAME.lower()}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>{sys.executable}</string>
+        <string>{script_path}</string>
+        <string>--background</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+</dict>
+</plist>"""
+            try:
+                os.makedirs(os.path.dirname(plist_path), exist_ok=True)
+                with open(plist_path, "w") as f:
+                    f.write(content)
+            except Exception as e:
+                print(f"macOS LaunchAgent Error: {e}")
+        else:
+            if os.path.exists(plist_path):
+                os.remove(plist_path)
+
+    elif system == "Linux":
+        autostart_dir = os.path.expanduser("~/.config/autostart")
+        desktop_file = os.path.join(autostart_dir, f"{APP_NAME.lower()}.desktop")
+        if enabled:
+            try:
+                os.makedirs(autostart_dir, exist_ok=True)
+                content = f"""[Desktop Entry]
+Type=Application
+Name={APP_NAME}
+Exec={sys.executable} {script_path} --background
+Terminal=false
+"""
+                with open(desktop_file, "w") as f:
+                    f.write(content)
+            except Exception as e:
+                print(f"Linux Autostart Error: {e}")
+        else:
+            if os.path.exists(desktop_file):
+                os.remove(desktop_file)
 
 # --- Core Logic & Tray ---
 class BatterySaverApp:

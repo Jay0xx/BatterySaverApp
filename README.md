@@ -6,71 +6,72 @@ A lightweight, cross-platform desktop application that monitors your laptop's ba
 - **High Battery Alerts**: Prevents overcharging (default 95%).
 - **Low Battery Alerts**: Protects against deep discharge (default 25%).
 - **Live Dashboard**: Real-time battery percentage and time-remaining estimates.
-- **Device Detection**: Shows your specific laptop model in notifications.
+- **Device Detection**: Shows your specific laptop/Mac model in notifications.
 - **System Tray Support**: Runs silently in the background with a quick-access menu.
-- **Auto-Start**: One-click "Start on boot" feature.
+- **Auto-Start**: One-click "Start on boot" feature for Windows, macOS, and Linux.
 
 ---
 
-## ⚡ Quick Start (Windows App)
+## ⚡ Quick Start
 
-The easiest way to use the app is to use the pre-built executable.
+### 🪟 Windows Users
+The easiest way is to use the pre-built executable.
+1.  **Download**: Get `BatterySaverApp.exe` from the [Releases](https://github.com/Jay0xx/BatterySaverApp/releases) page.
+2.  **Run**: Double-click the file to open settings.
+3.  **Protect**: Set your limits and click **Save & Minimize**. It will hide in your system tray.
 
-1.  **Download/Locate**: Find `BatterySaverApp.exe` (located in the `dist/` folder).
-2.  **Run**: Double-click the file to open the settings window.
-3.  **Configure**: Set your preferred high and low thresholds.
-4.  **Protect**: Click **Save & Minimize**. The app will now live in your system tray (near the clock).
-
-> **Note**: Windows may show a "SmartScreen" warning since this is a custom-built app. Click **"More info"** and then **"Run anyway"** to proceed.
+### 🍎 macOS Users
+To run the app on Mac:
+1.  **Install Python**: Ensure you have Python 3 installed.
+2.  **Install Dependencies**: Open Terminal and run:
+    ```bash
+    pip3 install psutil plyer pystray pillow
+    ```
+3.  **Launch**: Download `battery_monitor.py` and run:
+    ```bash
+    python3 battery_monitor.py
+    ```
+4.  **Package (Optional)**: If you want a `.app` file, run:
+    ```bash
+    pip3 install pyinstaller
+    pyinstaller --onefile --windowed --name BatterySaverApp battery_monitor.py
+    ```
 
 ---
 
 ## 🛠️ Usage & Controls
 
 ### Main Dashboard
-- **Live Stats**: View your current battery percentage and an estimate of how much time you have left.
-- **High Threshold**: When your laptop is charging and hits this %, you'll get a reminder to unplug.
-- **Low Threshold**: When you are on battery and drop below this %, you'll get a reminder to plug in.
+- **Live Stats**: View your current battery percentage and estimated time remaining.
+- **High Threshold**: Get notified when it's time to unplug.
+- **Low Threshold**: Get notified when it's time to plug in soon.
 
 ### System Tray Menu
-Find the battery icon in your taskbar tray:
-- **Right-Click**: Access **Open Settings**, **Pause/Resume**, or **Quit**.
-- **Start on Boot**: Check this box in the settings to have the app protect your battery automatically every time you turn on your PC.
+Find the battery icon in your taskbar tray (Windows) or Menu Bar (macOS):
+- **Right-Click / Click**: Access **Open Settings**, **Pause/Resume**, or **Quit**.
+- **Start on Boot**: Enable this in settings to stay protected automatically every time you start your computer.
 
 ---
 
-## 👨‍� Developer Setup (Running from Source)
-
-If you prefer to run the Python script directly or want to modify the code:
+## 👨‍💻 Developer Setup
 
 ### 1. Prerequisites
-- **Python 3.x**: [Download here](https://www.python.org/downloads/).
-- **Dependencies**: Install the required libraries via terminal:
+- **Python 3.x**
+- **Libraries**:
   ```bash
   pip install psutil plyer pystray pillow
   ```
 
-### 2. Running the Script
-```powershell
-# Open the settings window
-python battery_monitor.py
-
-# Launch directly to tray (no window)
-python battery_monitor.py --background
-```
-
-### 3. Build your own EXE
-If you make changes and want to share your own version:
+### 2. Running
 ```bash
-pip install pyinstaller
-pyinstaller --onefile --windowed --name BatterySaverApp battery_monitor.py
+python battery_monitor.py
 ```
 
 ---
 
 ## 📝 Troubleshooting
-- **No Notifications?** Ensure "Focus Assist" (Windows) or "Do Not Disturb" (macOS) is turned off. 
-- **Auto-Start Issues?** If you move the `.exe` file to a new location, reopen the settings and re-check the "Start on boot" box to update the startup path.
+- **No Notifications?** On Windows, check "Focus Assist". On macOS, check "System Settings > Notifications" and ensure Python/BatterySaverApp is allowed.
+- **Permission Denied?** On macOS/Linux, you may need to grant permission for the app to access system battery info or for PyInstaller to build the bundle.
 
 ---
 
